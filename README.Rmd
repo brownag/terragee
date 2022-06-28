@@ -1,0 +1,80 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# terragee
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of {terragee} is to help with extension and testing of the {terra} package in use cases involving GDAL drivers for Google Earth Engine assets. 
+
+ - **EEDA** <<https://gdal.org/drivers/vector/eeda.html>>
+ 
+ - **EEDAI** <<https://gdal.org/drivers/raster/eedai.html>>
+ 
+
+## Installation
+
+You can install the development versions of {terra} and {terragee} like so:
+
+``` r
+install.packages("terra", repos = "http://rspatial.r-universe.dev/")
+remotes::install_github("brownag/terragee")
+```
+
+## Example
+
+This example shows how to access a Google Earth Engine Image or ImageCollection with {terragee}.
+
+```{r example}
+library(terragee)
+```
+
+### Set Google Application Credentials
+
+```{r, setRealCreds, include = FALSE}
+# device specific private key
+set_google_application_credentials("misc/mycredentials.json")
+```
+
+```{r, setFakeCreds, eval = FALSE}
+set_google_application_credentials("~/example-gizmo-999999-999999999999.json")
+```
+
+### `EEImage`
+
+```{r EEImage}
+# returns SpatRaster
+x <- EEImage("projects/earthengine-public/assets/COPERNICUS/S2/20170430T190351_20170430T190351_T10SEG")
+terra::plot(x[[3]])
+```
+
+### `EEImageCollection`
+
+```{r EEImageCollection}
+# returns SpatRasterCollection (many SpatRaster, multiple per asset, one for each subdataset)
+x <- EEImageCollection("projects/earthengine-public/assets/COPERNICUS/S2", n = 3)
+lapply(x, function(x) x)
+```
+
+## On the scope and intent of this package...
+
+Providing a simple interface to major features of {terra} and Google Earth Engine assets is the primary goal, even when it means (occasionally) sacrificing backward compatibility. 
+
+The API of this simple and experimental package is not guaranteed to be stable at any time in the near future. There are currently no plans to pursue CRAN submission. The focal point of development is to incrementally provide the most convenient wrappers that demonstrate basic functionality. 
+
+In the event that features of GDAL, {terra} or the Earth Engine API significantly improve (in terms of how Google Earth Engine results are handled, behavior of `SpatRaster` / `SpatRasterCollection` / `SpatVector` / `SpatVectorProxy` objects, etc.), compatibility with prior versions of {terra} will not be guaranteed. Whenever needed the minimum required {terra} version will be incremented to stay in sync with changes and alert users of the need to update. Support for the latest {terra} on CRAN and relative stability with current development version on [R-Universe](https://rspatial.r-universe.dev/ui#package:terra) is about the extent of what can be "expected" to work. 
+
+Running with a version of GDAL newer than that included in the latest Windows RTools or available via R-Universe should be regarded as experimental. Older versions of GDAL (prior to ~2.4.x) are not supported as they do not have the required EEDA/EEDAI drivers. In general it can be expected that modern versions of GDAL are compatible with {terragee}... but specific operations may have additional dependencies. For instance, spatial predicates in the OGR `query` argument requires GDAL be built with _Spatialite_).
