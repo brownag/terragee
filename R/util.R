@@ -1,11 +1,11 @@
 
-#' Functions for working with SpatRasterCollection objects
+#' Functions for working with `SpatRasterCollection` objects
 #'
 #' @param x SpatRasterCollection
-#' @param colnames Default `c("i", "x", "y", "crs", "a", "b", "c", "d")`
+#' @param colnames Default `c("i", "x", "y", "crs", "xmin", "xmax", "ymin", "ymax")`
 #'
 #' @return `.sprcres()`: data.frame with first column `"i"` as index, followed by resolution (`"x"`, `"y"`),
-#'                       coordinate reference system (`"crs"`), and extent (`"a"`, `"b"`, `"c"`, `"d"`)
+#'                       coordinate reference system (`"crs"`), and extent (`"xmin"`, `"xmax"`, `"ymin"`, `"ymax"`)
 #' @noRd
 #' @keywords internal
 .sprcres <- function(x, colnames = c("i", "x", "y", "crs", "xmin", "xmax", "ymin", "ymax")) {
@@ -31,7 +31,7 @@
 
 #' Add EEDA and EEDAI driver prefix to path
 #'
-#' @param x character. path to Google Earth Engine asset
+#' @param x character. ID/path to Google Earth Engine asset
 #'
 #' @return path with "EEDA" or "EEDAI" prefix
 #' @aliases .EEDAI
@@ -53,8 +53,7 @@
   x
 }
 
-
-#' Return a `SpatRaster` for each subdataset in a dataset
+#' Return a `SpatRaster` for each sub-dataset in a dataset
 #'
 #' @param x character. path to dataset
 #'
