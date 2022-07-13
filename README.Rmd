@@ -16,6 +16,8 @@ knitr::opts_chunk$set(
 # terragee
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/brownag/terragee/workflows/R-CMD-check/badge.svg)](https://github.com/brownag/terragee/actions)
+[![terragee Manual](https://img.shields.io/badge/docs-HTML-informational)](https://humus.rocks/terragee/)
 <!-- badges: end -->
 
 The goal of {terragee} is to help with extension and testing of the {terra} package in use cases involving GDAL drivers for Google Earth Engine assets. 

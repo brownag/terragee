@@ -4,6 +4,10 @@
 # terragee
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/brownag/terragee/workflows/R-CMD-check/badge.svg)](https://github.com/brownag/terragee/actions)
+[![terragee
+Manual](https://img.shields.io/badge/docs-HTML-informational)](https://humus.rocks/terragee/)
 <!-- badges: end -->
 
 The goal of {terragee} is to help with extension and testing of the
@@ -44,8 +48,6 @@ set_google_application_credentials("~/example-gizmo-999999-999999999999.json")
 ``` r
 # returns SpatRaster
 x <- EEImage("projects/earthengine-public/assets/COPERNICUS/S2/20170430T190351_20170430T190351_T10SEG")
-#> Warning: [rast] skipped sub-datasets (see 'desc(sds=TRUE)'):
-#> B2,B3,B4,B8,QA10, B5,B6,B7,B8A,B11,B12,QA20
 terra::plot(x[[3]])
 ```
 
