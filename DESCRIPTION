@@ -1,11 +1,11 @@
 Package: terragee
 Type: Package
-Title: Use Google Earth Engine Assets with terra via Earth Engine Data Access GDAL Drivers
-Version: 0.1.0.9000
+Title: Access Google Earth Engine Data with 'terra'
+Version: 0.0.0.9001
 Authors@R: c(person(given="Andrew", family="Brown", email="brown.andrewg@gmail.com", role = c("aut", "cre")))
 Maintainer: Andrew Brown <brown.andrewg@gmail.com>
 Description: Wrapper functions for extending and testing {terra} package with EEDA <https://gdal.org/drivers/vector/eeda.html> and EEDAI <https://gdal.org/drivers/raster/eedai.html> drivers for Google Earth Engine assets.
-License: GPL-3
+License: GPL-3 + file LICENSE
 LazyData: true
 Imports: terra
 URL: https://github.com/brownag/terragee

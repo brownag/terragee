@@ -4,7 +4,7 @@
 \name{terragee-package}
 \alias{terragee}
 \alias{terragee-package}
-\title{terragee: Use Google Earth Engine Assets with terra via Earth Engine Data Access GDAL Drivers}
+\title{terragee: Access Google Earth Engine Data with 'terra'}
 \description{
 Wrapper functions for extending and testing {terra} package with EEDA \url{https://gdal.org/drivers/vector/eeda.html} and EEDAI \url{https://gdal.org/drivers/raster/eedai.html} drivers for Google Earth Engine assets.
 }
